@@ -6,7 +6,7 @@
  *
  *  Name: Alex Chu    Student ID: 153954219    Date: 5/31/2023
  *  Assignment 1 API Backend Cyclic Link:      https://alexchu-web422-a1.cyclic.app/
- *  Assignment 2 Frontend Link:
+ *  Assignment 2 Frontend Link: https://alexchu-dev.github.io/WEB422-Assignment2/
  ********************************************************************************/
 let page = 1; //default current page is 1
 
