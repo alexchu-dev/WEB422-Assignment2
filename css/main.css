@@ -1,0 +1,5 @@
+#moviesTable tr:hover{ cursor:pointer; }
+#searchForm button {
+    margin-left:5px;
+    font-weight: bold;
+}
