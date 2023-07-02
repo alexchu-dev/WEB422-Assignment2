@@ -5,33 +5,33 @@
  *  (including web sites) or distributed to other students.
  *
  *  Name: Alex Chu    Student ID: 153954219    Date: 5/31/2023
- *  Assignment 1 API Backend Cyclic Link:      https://alexchu-web422-a1.cyclic.app/
- *  Assignment 2 Frontend Link: https://alexchu-dev.github.io/WEB422-Assignment2/
+ *  Assignment 1 API Backend Cyclic Link:      https://alexchu-web422-a1.vercel.app
+ *  Assignment 2 Frontend Link:                https://alexchu-web422-a2.vercel.app
  ********************************************************************************/
-let page = 1; //default current page is 1
+let page = 1 //default current page is 1
 
-const perPage = 10; //default items per page is 10
+const perPage = 10 //default items per page is 10
 
-const baseUrl = "https://alexchu-web422-a1.cyclic.app/api/movies";
+const baseUrl = "https://alexchu-web422-a1.vercel.app/api/movies"
 
 const loadMovieData = (title = null) => {
-  const paginationController = document.querySelector(".pagination"); //define pagination controller for better organization
-  const moviesTable = document.querySelector("#moviesTable");
-  const currentPage = document.querySelector("#current-page");
-  const detailsModal = document.querySelector("#detailsModal");
+  const paginationController = document.querySelector(".pagination") //define pagination controller for better organization
+  const moviesTable = document.querySelector("#moviesTable")
+  const currentPage = document.querySelector("#current-page")
+  const detailsModal = document.querySelector("#detailsModal")
 
-  let url = `${baseUrl}?page=${page}&perPage=${perPage}`;
+  let url = `${baseUrl}?page=${page}&perPage=${perPage}`
 
   if (title) {
-    title = encodeURIComponent(title);
-    page = 1;
-    url += `&title=${title}`;
-    paginationController.classList.add("d-none"); //to hide the pagination control
+    title = encodeURIComponent(title)
+    page = 1
+    url += `&title=${title}`
+    paginationController.classList.add("d-none") //to hide the pagination control
   } else {
-    paginationController.classList.remove("d-none"); //to show the pagination control
+    paginationController.classList.remove("d-none") //to show the pagination control
   }
 
-  console.log(url);
+  console.log(url)
 
   /* The following used a nested fetch which could be avoided by using only one fetch to
     query all the attributes from the data to some variables then manipulate. However, due
@@ -54,18 +54,18 @@ const loadMovieData = (title = null) => {
                   .padStart(2, "0")}</td>
                 </tr>`
             )
-            .join("")}`;
+            .join("")}`
 
-      console.log(data); // Debug, checking data
+      console.log(data) // Debug, checking data
 
-      moviesTable.innerHTML = movieRows; // using querySelector to insert the movieRows generated above into the table
-      currentPage.innerHTML = page; // updating the current page number
-      updatedRows = moviesTable.querySelectorAll("tr"); // getting all tr elements only to the updatedRows
+      moviesTable.innerHTML = movieRows // using querySelector to insert the movieRows generated above into the table
+      currentPage.innerHTML = page // updating the current page number
+      updatedRows = moviesTable.querySelectorAll("tr") // getting all tr elements only to the updatedRows
 
       updatedRows.forEach((row) => {
         row.addEventListener("click", (e) => {
           // click event is listened and manipulate the modal
-          const movieId = row.getAttribute("data-id");
+          const movieId = row.getAttribute("data-id")
           fetch(`${baseUrl}/${movieId}`).then((res) => {
             res.json().then((data) => {
               let modalContent = `
@@ -83,12 +83,11 @@ const loadMovieData = (title = null) => {
               <strong>IMDB Rating:</strong> ${data.imdb.rating} (${
                 data.imdb.votes
               } votes)
-              `;
+              `
 
               detailsModal.querySelector(".modal-title").textContent =
-                data.title;
-              detailsModal.querySelector(".modal-body").innerHTML =
-                modalContent;
+                data.title
+              detailsModal.querySelector(".modal-body").innerHTML = modalContent
 
               // Display the modal
               let modal = new bootstrap.Modal(
@@ -97,40 +96,40 @@ const loadMovieData = (title = null) => {
                   backdrop: "static",
                   keyboard: false,
                 }
-              );
+              )
 
-              modal.show();
-            });
-          });
-        });
-      });
-    });
-};
+              modal.show()
+            })
+          })
+        })
+      })
+    })
+}
 
 function paginationHandler() {
-  const currentPage = document.querySelector("#current-page");
+  const currentPage = document.querySelector("#current-page")
   document.querySelector("#previous-page").addEventListener("click", (e) => {
-    console.log("previous page clicked");
+    console.log("previous page clicked")
     if (currentPage.innerHTML > 1) {
-      currentPage.innerHTML = page--;
-      loadMovieData();
+      currentPage.innerHTML = page--
+      loadMovieData()
     }
-  });
+  })
   document.querySelector("#next-page").addEventListener("click", (e) => {
-    console.log("next page clicked");
-    currentPage.innerHTML = page++;
-    loadMovieData();
-  });
+    console.log("next page clicked")
+    currentPage.innerHTML = page++
+    loadMovieData()
+  })
   document.querySelector("#searchForm").addEventListener("submit", (e) => {
-    const searchInput = document.querySelector("#title").value;
-    e.preventDefault();
-    console.log("search clicked");
-    console.log(searchInput);
-    loadMovieData(searchInput);
-  });
+    const searchInput = document.querySelector("#title").value
+    e.preventDefault()
+    console.log("search clicked")
+    console.log(searchInput)
+    loadMovieData(searchInput)
+  })
   document.querySelector("#clearForm").addEventListener("click", (e) => {
-    console.log("clear clicked");
-    document.querySelector("#title").value = "";
-    loadMovieData();
-  });
+    console.log("clear clicked")
+    document.querySelector("#title").value = ""
+    loadMovieData()
+  })
 }
