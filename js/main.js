@@ -5,14 +5,14 @@
  *  (including web sites) or distributed to other students.
  *
  *  Name: Alex Chu    Student ID: 153954219    Date: 5/31/2023
- *  Assignment 1 API Backend Cyclic Link:     https://alexchu-web422-a1.vercel.app
+ *  Assignment 1 API Backend Cyclic Link:     https://alexchu-web422-a1.cyclic.app/ or https://alexchu-web422-a1.vercel.app (Vercel Express Serverless deployment working in progress)
  *  Assignment 2 Frontend Link:               https://alexchu-web422-a2.vercel.app
  ********************************************************************************/
 let page = 1 //default current page is 1
 
 const perPage = 10 //default items per page is 10
 
-const baseUrl = "https://alexchu-web422-a1.vercel.app/api/movies"
+const baseUrl = "https://alexchu-web422-a1.cyclic.app/api/movies"
 
 const loadMovieData = (title = null) => {
   const paginationController = document.querySelector(".pagination") //define pagination controller for better organization
