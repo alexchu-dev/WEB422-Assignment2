@@ -5,8 +5,8 @@
  *  (including web sites) or distributed to other students.
  *
  *  Name: Alex Chu    Student ID: 153954219    Date: 5/31/2023
- *  Assignment 1 API Backend Cyclic Link:      https://alexchu-web422-a1.vercel.app
- *  Assignment 2 Frontend Link:                https://alexchu-web422-a2.vercel.app
+ *  Assignment 1 API Backend Cyclic Link:     https://alexchu-web422-a1.vercel.app
+ *  Assignment 2 Frontend Link:               https://alexchu-web422-a2.vercel.app
  ********************************************************************************/
 let page = 1 //default current page is 1
 
