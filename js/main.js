@@ -94,7 +94,7 @@ const loadMovieData = (title = null) => {
                 document.getElementById("detailsModal"),
                 {
                   backdrop: "static",
-                  keyboard: false,
+                  keyboard: true,
                 }
               )
 
